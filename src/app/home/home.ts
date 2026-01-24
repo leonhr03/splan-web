@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ClassItem} from '../components/class-item/class-item';
 import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {Student} from '../components/student/student';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import {FormsModule} from '@angular/forms';
     ClassItem,
     NgIf,
     FormsModule,
-    NgForOf
+    NgForOf,
+    Student
   ],
   standalone: true,
   templateUrl: './home.html',
@@ -25,6 +27,9 @@ export class Home implements OnInit {
   classes: any[] = []
   currentClass: string = ""
   students: any = []
+  currentSubject: string = ""
+  newStudent: string = ""
+  showAddStudent = false
 
 
   ngOnInit() {
@@ -57,8 +62,20 @@ export class Home implements OnInit {
   }
 
   loadStudents(subject: string) {
+    this.currentSubject = subject;
     const stored = localStorage.getItem(`${this.currentClass}/${subject}/students`);
     this.students = stored ? JSON.parse(stored) : [];
+    console.log(this.students)
+  }
+
+  addStudent(){
+    const stored = localStorage.getItem(`${this.currentClass}/${this.currentSubject}/students`);
+    const parsed = stored ? JSON.parse(stored) : [];
+    const newList = [{student: this.newStudent}, ...parsed]
+    localStorage.setItem(`${this.currentClass}/${this.currentSubject}/students`, JSON.stringify(newList));
+    this.students = newList;
+    this.newStudent = "";
+    this.showAddStudent = false;
   }
 
 }

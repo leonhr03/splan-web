@@ -14,12 +14,12 @@
     <div class="card">
       <div class="cardHeader">
         <h2>Students</h2>
-        <button class="addButton">+</button>
+        <button class="addButton" (click)="showAddStudent = true">+</button>
       </div>
       <p class="errorText" *ngIf="students.length === 0">no class selected</p>
       <div *ngIf="students.length !== 0">
         <div *ngFor="let s of students">
-          <h2>{{s}}</h2>
+          <app-student [student]="s.student" [class]="currentClass"/>
         </div>
       </div>
     </div>
@@ -65,20 +65,20 @@
     </div>
   </div> <!-- subject class-->
 
-  <div class="alertOverlay" *ngIf="showAddSubject" (click)="showAddSubject = false">
+  <div class="alertOverlay" *ngIf="showAddStudent" (click)="showAddStudent = false">
     <div class="alertContainer" (click)="$event.stopPropagation()">
       <h1>Add a Student</h1>
 
       <input
         class="input"
         placeholder="subject"
-        [(ngModel)]="newSubject"
+        [(ngModel)]="newStudent"
       />
 
       <button
         type="button"
         class="button"
-        (click)="addSubject(); $event.stopPropagation()"
+        (click)="addStudent(); $event.stopPropagation()"
       >
         add
       </button>

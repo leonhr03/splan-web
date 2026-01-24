@@ -1,0 +1,27 @@
+<div class="itemContainer">
+  <div class="nameContainer">
+    <h1>{{student}}</h1>
+  </div>
+  <div class="gradeContainer">
+    <div class="gradeBackground">
+      <p *ngIf="!marks[0].exams"><span>S</span> -</p>
+      <p *ngIf="marks[0].exams"><span>S</span> {{marks[0].exams}}</p>
+    </div>
+    <div class="gradeBackground">
+      <p *ngIf="!marks[0].oral"><span>S</span> -</p>
+      <p *ngIf="marks[0].oral"><span>S</span> {{marks[0].oral}}</p>
+    </div>
+    <div class="gradeBackground">
+      <p *ngIf="!marks[0].other"><span>A</span> -</p>
+      <p *ngIf="marks[0].other"><span>A</span> {{marks[0].other}}</p>
+    </div>
+    <div class="gradeBackground">
+      <p *ngIf="!marks[0].ges"><span>G</span> -</p>
+      <p *ngIf="marks[0].ges"><span>G</span> {{marks[0].ges}}</p>
+    </div>
+  </div>
+
+  <div class="btnContainer">
+    <button class="button">></button>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+.itemContainer{
+  background-color: #0d3d3f;
+  border-radius: 15px;
+  padding: 16px;
+  margin: 10px;
+  width: 90%;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.nameContainer{
+  width: 50%;
+  display: flex;
+  text-align: left;
+}
+
+.gradeContainer{
+  width: 40%;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.btnContainer{
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gradeBackground{
+  background-color: #0d2d2f;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button{
+  background: none;
+  border: none;
+  color: #22e55c;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+span{
+  color: #22e55c;
+}
+
+p, h1 {
+  color: #fff
+}

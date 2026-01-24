@@ -1,0 +1,87 @@
+<div class="container">
+  <h1 class="heading">Splan for Web</h1>
+  <div class="layout">
+    <div class="card">
+      <div class="cardHeader">
+        <h2>Classes</h2>
+        <button class="addButton" (click)="showAddClass = true">+</button>
+      </div>
+      <div *ngFor="let c of classes">
+        <app-class-item [className]="c.class" (submit)="showAddSubject = true; currentClass = c.class" (subject)="loadStudents($event)"></app-class-item>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cardHeader">
+        <h2>Students</h2>
+        <button class="addButton">+</button>
+      </div>
+      <p class="errorText" *ngIf="students.length === 0">no class selected</p>
+      <div *ngIf="students.length !== 0">
+        <div *ngFor="let s of students">
+          <h2>{{s}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alertOverlay" *ngIf="showAddClass" (click)="showAddClass = false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Add a class</h1>
+
+      <input
+        class="input"
+        placeholder="class"
+        [(ngModel)]="newClass"
+      />
+
+      <button
+        type="button"
+        class="button"
+        (click)="addClass(); $event.stopPropagation()"
+      >
+        add
+      </button>
+    </div>
+  </div> <!-- add class-->
+
+  <div class="alertOverlay" *ngIf="showAddSubject" (click)="showAddSubject = false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Add a subject</h1>
+
+      <input
+        class="input"
+        placeholder="subject"
+        [(ngModel)]="newSubject"
+      />
+
+      <button
+        type="button"
+        class="button"
+        (click)="addSubject(); $event.stopPropagation()"
+      >
+        add
+      </button>
+    </div>
+  </div> <!-- subject class-->
+
+  <div class="alertOverlay" *ngIf="showAddSubject" (click)="showAddSubject = false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Add a Student</h1>
+
+      <input
+        class="input"
+        placeholder="subject"
+        [(ngModel)]="newSubject"
+      />
+
+      <button
+        type="button"
+        class="button"
+        (click)="addSubject(); $event.stopPropagation()"
+      >
+        add
+      </button>
+    </div>
+  </div> <!-- student class-->
+</div>

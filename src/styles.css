@@ -4,3 +4,5 @@
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
+
+body {background: #0d1d1f; align-items: center; justify-content: center; display: flex;}

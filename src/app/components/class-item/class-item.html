@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="itemContainer" (click)="showSubjects = !showSubjects">
+    <h1>{{className}}</h1>
+  </div>
+
+  <div class="subjectContainer" *ngIf="showSubjects">
+    <div class="cardHeader">
+      <h2>Students</h2>
+      <button class="addButton" (click)="onClick()">+</button>
+    </div>
+    <div class="subjectContainer" *ngFor="let s of subjects" (click)="clickSubject(s.subject)">
+      <h2>{{s.subject}}</h2>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+.itemContainer {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: 70% 30%;
+  width: 95%;
+  gap: 10px;
+  align-items: center;
+  align-self: center;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #0d4d4f;
+  margin-top: 10px;
+}
+
+h1 {
+  font-size: 25px;
+  color: #fff;
+}
+
+button {
+  border: none;
+  background-color: #0d4d4f;
+  border: 1px solid #22e55c;
+  border-radius: 50vh;
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+}
+

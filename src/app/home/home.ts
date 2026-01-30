@@ -3,6 +3,7 @@ import {ClassItem} from '../components/class-item/class-item';
 import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Student} from '../components/student/student';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ import {Student} from '../components/student/student';
 })
 
 export class Home implements OnInit {
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private route: Router) { }
   showAddClass = false
   newClass: string = ""
   newSubject: string = ""
@@ -61,9 +62,9 @@ export class Home implements OnInit {
     window.location.reload();
   }
 
-  loadStudents(subject: string) {
+  loadStudents(subject: string, className: string) {
     this.currentSubject = subject;
-    const stored = localStorage.getItem(`${this.currentClass}/${subject}/students`);
+    const stored = localStorage.getItem(`${className}/${subject}/students`);
     this.students = stored ? JSON.parse(stored) : [];
     console.log(this.students)
   }
@@ -78,4 +79,9 @@ export class Home implements OnInit {
     this.showAddStudent = false;
   }
 
+  goToGrades(student: string) {
+    this.route.navigate(['/grades'], {
+      queryParams: {student: student, class: this.currentClass, subject: this.currentSubject}
+    });
+  }
 }

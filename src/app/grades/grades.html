@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="header">
+    <button class="backButton" (click)="goBack()">←</button>
+    <h1 class="heading">{{student}}</h1>
+    <button class="editButton">edit</button>
+  </div>
+  <h2 class="avrHeading">Ø{{avrGes}}</h2>
+    <div class="layout">
+        <div class="card">
+          <div class="cardHeader">
+            <h2>Schriftlich <span class="avrText">Ø{{avrExam}}</span></h2>
+            <button class="addButton" (click)="type = 'exam'; showAdd = true">+</button>
+          </div>
+          <div *ngFor="let grade of exam">
+            <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardHeader">
+            <h2>Mündlich <span class="avrText">Ø{{avrOral}}</span></h2>
+            <button class="addButton" (click)="type = 'oral'; showAdd = true">+</button>
+          </div>
+          <div *ngFor="let grade of oral">
+            <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardHeader">
+            <h2>Sonstiges <span class="avrText">Ø{{avrOther}}</span></h2>
+            <button class="addButton" (click)="type = 'other'; showAdd = true">+</button>
+          </div>
+          <div *ngFor="let grade of other">
+            <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
+          </div>
+        </div>
+    </div>
+
+
+  <div class="alertOverlay" *ngIf="showAdd" (click)="showAdd = false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Add a Grade</h1>
+
+      <input
+        class="input"
+        placeholder="Grade name"
+        [(ngModel)]="newName"
+      />
+
+      <input
+        class="input"
+        placeholder="grade"
+        [(ngModel)]="newGrade"
+      />
+
+      <button
+        type="button"
+        class="button"
+        (click)="addGrade(); $event.stopPropagation()"
+      >
+        add
+      </button>
+    </div>
+  </div>
+</div>

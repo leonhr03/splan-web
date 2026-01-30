@@ -35,6 +35,8 @@ export class Grades implements OnInit {
   weightExam: string = "50"
   weightOther: string = "20"
   weightOral: string = "30"
+  showEdit = false
+  totalWeight = Number(this.weightExam) + Number(this.weightOral) + Number(this.weightOther)
 
 
   private get storageKey(): string {
@@ -120,5 +122,17 @@ export class Grades implements OnInit {
     const avr = all / list.length;
     console.log(avr.toFixed(1))
     return avr.toFixed(1)
+  }
+
+  adWeight(type: string) {
+    if(type === 'exam'){ this.weightExam = (Number(this.weightExam) + 5).toString()}
+    if(type === 'oral'){ this.weightOral = (Number(this.weightOral) + 5).toString()}
+    if(type === 'other'){ this.weightOther = (Number(this.weightOther) + 5).toString()}
+  }
+
+  subWeight(type: string){
+    if(type === 'exam'){ this.weightExam = (Number(this.weightExam) - 5).toString()}
+    if(type === 'oral'){ this.weightOral = (Number(this.weightOral) - 5).toString()}
+    if(type === 'other'){ this.weightOther = (Number(this.weightOther) - 5).toString()}
   }
 }

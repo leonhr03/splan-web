@@ -186,3 +186,32 @@ button:active {
   position: absolute;
   left: 40px;
 }
+
+.editRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center; /* 👈 DAS ist der entscheidende Punkt */
+  gap: 30px;
+  width: 80%;
+  margin-top: 10px;
+}
+
+
+
+.editRow button {
+  background: #22e55c;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+
+.editRow p {
+  color: #fff;
+}

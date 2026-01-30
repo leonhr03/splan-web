@@ -2,7 +2,7 @@
   <div class="header">
     <button class="backButton" (click)="goBack()">←</button>
     <h1 class="heading">{{student}}</h1>
-    <button class="editButton">edit</button>
+    <button class="editButton" (click)="showEdit = true">edit</button>
   </div>
   <h2 class="avrHeading">Ø{{avrGes}}</h2>
     <div class="layout">
@@ -61,6 +61,31 @@
       >
         add
       </button>
+    </div>
+  </div>
+
+  <div class="alertOverlay" *ngIf="showEdit" (click)="showEdit = false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Edit the Weight</h1>
+      <div class="editRow">
+        <button (click)="$event.stopPropagation(); subWeight('exam')">-</button>
+        <p>exam: {{weightExam}}%</p>
+        <button (click)="$event.stopPropagation(); adWeight('exam')">+</button>
+      </div>
+
+      <div class="editRow">
+        <button (click)="$event.stopPropagation(); subWeight('oral')">-</button>
+        <p>exam: {{weightExam}}%</p>
+        <button (click)="$event.stopPropagation(); adWeight('oral')">+</button>
+      </div>
+
+      <div class="editRow">
+        <button (click)="$event.stopPropagation(); subWeight('other')">-</button>
+        <p>exam: {{weightExam}}%</p>
+        <button (click)="$event.stopPropagation(); adWeight('other')">+</button>
+      </div>
+
+      <p>Total: {{totalWeight}}%</p>
     </div>
   </div>
 </div>

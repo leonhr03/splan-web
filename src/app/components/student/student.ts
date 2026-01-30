@@ -12,12 +12,17 @@ import {NgIf} from '@angular/common';
 export class Student implements OnInit {
   @Input() student!: string;
   @Input() class!: string;
-  marks: any[] = [];
+  @Input() subject!: string;
+  exam: string | null = "";
+  oral: string | null = "";
+  other: string | null = "";
+  ges: string | null = "";
 
   ngOnInit() {
-    const stored = localStorage.getItem(`${this.class}/${this.student}/marks`);
-    const parsed = stored ? JSON.parse(stored) : [];
-    this.marks = parsed;
+    this.exam = localStorage.getItem(`${this.class}/${this.subject}/${this.student}/avrExam`)
+    this.oral = localStorage.getItem(`${this.class}/${this.subject}/${this.student}/avrOral`)
+    this.other = localStorage.getItem(`${this.class}/${this.subject}/${this.student}/avrOther`)
+    this.ges = localStorage.getItem(`${this.class}/${this.subject}/${this.student}/avrGes`)
   }
 
 }

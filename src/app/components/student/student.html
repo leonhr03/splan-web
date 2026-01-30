@@ -4,20 +4,19 @@
   </div>
   <div class="gradeContainer">
     <div class="gradeBackground">
-      <p *ngIf="!marks[0].exams"><span>S</span> -</p>
-      <p *ngIf="marks[0].exams"><span>S</span> {{marks[0].exams}}</p>
+      <p><span>S</span> {{ exam ? exam : '-,-' }}</p>
     </div>
+
     <div class="gradeBackground">
-      <p *ngIf="!marks[0].oral"><span>S</span> -</p>
-      <p *ngIf="marks[0].oral"><span>S</span> {{marks[0].oral}}</p>
+      <p><span>M</span> {{ oral ? oral : '-,-' }}</p>
     </div>
+
     <div class="gradeBackground">
-      <p *ngIf="!marks[0].other"><span>A</span> -</p>
-      <p *ngIf="marks[0].other"><span>A</span> {{marks[0].other}}</p>
+      <p><span>A</span> {{ other ? other : '-,-' }}</p>
     </div>
+
     <div class="gradeBackground">
-      <p *ngIf="!marks[0].ges"><span>G</span> -</p>
-      <p *ngIf="marks[0].ges"><span>G</span> {{marks[0].ges}}</p>
+      <p><span>Ø</span> {{ ges ? ges : '-,-' }}</p>
     </div>
   </div>
 

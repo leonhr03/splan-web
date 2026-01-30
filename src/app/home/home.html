@@ -7,19 +7,19 @@
         <button class="addButton" (click)="showAddClass = true">+</button>
       </div>
       <div *ngFor="let c of classes">
-        <app-class-item [className]="c.class" (submit)="showAddSubject = true; currentClass = c.class" (subject)="loadStudents($event)"></app-class-item>
+        <app-class-item [className]="c.class" (submit)="showAddSubject = true; currentClass = c.class" (subject)="loadStudents($event ,c.class)" (click)="currentClass = c.class"></app-class-item>
       </div>
     </div>
 
     <div class="card">
       <div class="cardHeader">
-        <h2>Students</h2>
+        <h2>Students {{currentClass}} - {{currentSubject}}</h2>
         <button class="addButton" (click)="showAddStudent = true">+</button>
       </div>
       <p class="errorText" *ngIf="students.length === 0">no class selected</p>
       <div *ngIf="students.length !== 0">
         <div *ngFor="let s of students">
-          <app-student [student]="s.student" [class]="currentClass"/>
+          <app-student [student]="s.student" [class]="currentClass" [subject]="currentSubject" (click)="goToGrades(s.student)"/>
         </div>
       </div>
     </div>

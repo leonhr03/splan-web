@@ -1,0 +1,34 @@
+.layout {
+  display: grid;
+  grid-template-columns: 3% 97%;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  background: #0d2d2f;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.content {
+  overflow: auto;
+}
+
+button {
+  width: 100%;
+  color: #22e55c;
+  border: none;
+  background: none;
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: scale(0.9);
+}

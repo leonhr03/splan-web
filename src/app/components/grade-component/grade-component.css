@@ -1,7 +1,7 @@
 .itemContainer {
   display: grid;
   flex-direction: row;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 85% 15%;
   width: 95%;
   gap: 10px;
   align-items: center;
@@ -17,13 +17,29 @@ h1 {
   color: #fff;
 }
 
-button {
+.gradeContainer {
   border: none;
-  background-color: #0d4d4f;
-  border: 1px solid #22e55c;
+  background-color: #0d2d2f;
   border-radius: 50vh;
   padding: 10px;
   margin: 10px;
   color: #fff;
+  width: 40px;
+  height: 40px;
 }
+
+.gradeContainer.onetotwo {
+  background-color: rgba(0,255,0,0.1);
+}
+
+
+.gradeContainer.twotofour {
+  background-color: rgba(255,180,0,0.2);
+}
+
+.gradeContainer.fourtosix {
+  background-color: rgba(255,0,0,0.1);
+}
+
+
 

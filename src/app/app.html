@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<div class="layout">
+  <div class="sidebar">
+    <button><mat-icon routerLink="">home</mat-icon></button>
+    <button><mat-icon routerLink="calendar">calendar_today</mat-icon></button>
+    <button><mat-icon routerLink="timetable">subject</mat-icon></button>
+  </div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

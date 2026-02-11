@@ -3,6 +3,91 @@
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 body {background: #0d1d1f; align-items: center; justify-content: center; display: flex;}
+
+/* Kalender Hintergrund */
+.fc {
+  background: #0d1d1f;
+  color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 12px;
+  height: 95vh;
+}
+
+/* Grid-Tabelle abrunden */
+.fc-scrollgrid {
+  border-radius: 16px;
+  overflow: hidden; /* WICHTIG */
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border-color: #0d2d2f;
+}
+
+/* Tabellen-Border-Farbe */
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: #0d2d2f;
+}
+
+/* Header (Monat, Buttons) */
+.fc-toolbar-title {
+  color: #22e55c;
+  font-size: 20px;
+  border: 1px solid #0d2d2f
+}
+
+.fc-event-title {
+  white-space: normal !important;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.fc-button {
+  background: #0d2d2f !important;
+  border: none !important;
+  color: #22e55c !important;
+  border-radius: 10px !important;
+}
+
+.fc-button:hover {
+  background: #134446 !important;
+}
+
+/* Tage */
+.fc-daygrid-day {
+  background: #0d2d2f;
+  height: 100px; /* feste Höhe für alle Tage */
+  min-height: 100px;
+  max-height: 100px;
+}
+
+
+.fc-daygrid-day-frame {
+  height: 100%;
+}
+
+/* Heute */
+.fc-day-today {
+  background: rgba(34, 229, 92, 0.15) !important;
+}
+
+/* Events */
+.fc-event {
+  background: rgba(34, 229, 92, 0.5) !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+/* Wochenende */
+.fc-day-sat,
+.fc-day-sun {
+  background: #0b2527;
+}

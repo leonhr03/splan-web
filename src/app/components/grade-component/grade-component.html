@@ -1,4 +1,56 @@
+
+
+
+
+
+
+
+
 <div class="itemContainer">
   <h1>{{ name }}</h1>
-  <button>{{grade}}</button>
+  <button class="gradeContainer" [class.onetotwo]="Number(grade) <2.9" [class.twotofour]="Number(grade) <3.9 && Number(grade) >2.9 "  [class.fourtosix]="Number(grade) >3.9 ">{{grade}}</button>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

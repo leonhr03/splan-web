@@ -19,7 +19,7 @@ export class ClassItem implements OnInit {
 
   ngOnInit() {
     const stored = localStorage.getItem(`${this.className}/subjects`);
-    this.subjects = stored ? JSON.parse(stored) : null;
+    this.subjects = stored ? JSON.parse(stored) : [];
   }
 
   onClick  () {

@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="header">
+    <h1 class="heading">Timetable</h1>
+    <button class="editButton" (click)="showEdit =  !showEdit"><mat-icon>edit</mat-icon></button>
+  </div>
+
+
+  <div class="grid">
+    <div class="split">
+      <p class="subContainer">Mo</p>
+      <div *ngFor="let s of monday">
+        <app-timetable-item [subject]="s.subject" [start]="s.start" [end]="s.end" [className]="s.class"/>
+      </div>
+      <p *ngIf="monday.length <= 0" class="errorText">no lessons</p>
+      <div class="buttonProvider" *ngIf="showEdit">
+        <button class="addButton" (click)="currentDay = 'mo'; showAddAlert = true">+</button>
+      </div>
+    </div>
+    <div class="split">
+      <p class="subContainer">Di</p>
+      <div *ngFor="let s of tuesday">
+        <app-timetable-item [subject]="s.subject" [start]="s.start" [end]="s.end" [className]="s.class"/>
+      </div>
+      <p *ngIf="tuesday.length <= 0" class="errorText">no lessons</p>
+
+      <div class="buttonProvider" *ngIf="showEdit">
+        <button class="addButton" (click)="currentDay = 'tu'; showAddAlert = true">+</button>
+      </div>
+    </div>
+    <div class="split">
+      <p class="subContainer">Mi</p>
+      <div *ngFor="let s of wednesday">
+        <app-timetable-item [subject]="s.subject" [start]="s.start" [end]="s.end" [className]="s.class"/>
+      </div>
+      <p *ngIf="wednesday.length <= 0" class="errorText">no lessons</p>
+
+      <div class="buttonProvider" *ngIf="showEdit">
+        <button class="addButton" (click)="currentDay = 'we'; showAddAlert = true">+</button>
+      </div>
+    </div>
+    <div class="split">
+      <p class="subContainer">Do</p>
+      <div *ngFor="let s of thursday">
+        <app-timetable-item [subject]="s.subject" [start]="s.start" [end]="s.end" [className]="s.class"/>
+      </div>
+      <p *ngIf="thursday.length <= 0" class="errorText">no lessons</p>
+
+      <div class="buttonProvider" *ngIf="showEdit">
+        <button class="addButton" (click)="currentDay = 'th'; showAddAlert = true">+</button>
+      </div>
+    </div>
+    <div class="split">
+      <p class="subContainer">Fr</p>
+      <div *ngFor="let s of friday">
+        <app-timetable-item [subject]="s.subject" [start]="s.start" [end]="s.end" [className]="s.class"/>
+      </div>
+      <p *ngIf="friday.length <= 0" class="errorText">no lessons</p>
+
+      <div class="buttonProvider" *ngIf="showEdit">
+        <button class="addButton" (click)="currentDay = 'fr'; showAddAlert = true">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="alertOverlay" *ngIf="showAddAlert">
+    <div class="alertContainer">
+      <h1>Add a Lesson</h1>
+      <div class="inputRow">
+        <div class="inputProvider">
+          <input class="input" placeholder="Start" [(ngModel)]="newStartTime">
+        </div>
+        <div class="inputProvider">
+          <input class="input" placeholder="End" [(ngModel)]="newEndTime">
+        </div>
+      </div>
+      <input class="input" placeholder="class" [(ngModel)]="newClass">
+      <input class="input" placeholder="Subject" [(ngModel)]="newSubject">
+
+      <button class="button" (click)="addSubject()">save</button>
+    </div>
+  </div>
+
+</div>

@@ -8,9 +8,11 @@
       <h2>Students</h2>
       <button class="addButton" (click)="onClick()">+</button>
     </div>
+    <p class="errorText" *ngIf="subjects.length <= 0">no subjects</p>
     <div class="subjectContainer" *ngFor="let s of subjects" (click)="clickSubject(s.subject)">
       <h2>{{s.subject}}</h2>
     </div>
+
   </div>
 
 </div>

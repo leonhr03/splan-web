@@ -5,6 +5,12 @@
   justify-content: center;
 }
 
+
+.errorText {
+  color: #777;
+  text-align: center;
+}
+
 .itemContainer{
   display: flex;
   width: 90%;

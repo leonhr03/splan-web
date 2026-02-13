@@ -1,0 +1,156 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: #0d1d1f;
+  height: 100%;
+  width: 100%;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.errorText {
+  color: #777;
+  text-align: center;
+}
+
+.heading {
+  color: #22e55c;
+  align-self: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.editButton {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #22e55c;
+}
+
+.buttonProvider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+
+.addButton {
+  background: #0d3d3f;
+  border: none;
+  color: #22e55c;
+  padding: 16px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: 95%;
+  align-self: center;
+  margin-top: 20px;
+
+}
+
+.spit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subContainer {
+  background: #0d3d3f;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  padding: 16px;
+  border-radius: 15px;
+  margin-top: 10px;
+  color: white;
+}
+
+
+button:hover{
+  scale: 1.1;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+
+.alertOverlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alertContainer{
+  display: flex;
+  background: #0d1d1f;
+  border: 1px solid #0d2d2f;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  padding: 16px;
+  gap: 10px;
+}
+
+.alertContainer h1 {
+  margin: 0;
+  color: #22e55c;
+  font-size: 25px;
+}
+
+.inputProvider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.inputRow{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 80%;
+  justify-items: center;
+}
+
+.input {
+  background: #0d2d2f;
+  width: 80%;
+  padding: 16px;
+  border: 1px solid #0d3d3f;
+  border-radius: 15px;
+  color: #fff;
+}
+.button {
+  background: #22e55c;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  color: #fff;
+}

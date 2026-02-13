@@ -14,6 +14,8 @@
           <div *ngFor="let grade of exam">
             <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
           </div>
+          <p class="errorText" *ngIf="exam.length <= 0">no grades</p>
+
         </div>
 
         <div class="card">
@@ -24,6 +26,8 @@
           <div *ngFor="let grade of oral">
             <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
           </div>
+          <p class="errorText" *ngIf="oral.length <= 0">no grades</p>
+
         </div>
 
         <div class="card">
@@ -34,6 +38,8 @@
           <div *ngFor="let grade of other">
             <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
           </div>
+          <p class="errorText" *ngIf="other.length <= 0">no grades</p>
+
         </div>
     </div>
 

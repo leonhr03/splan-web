@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="calendar-wrapper">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+
+  <div class="alertOverlay" *ngIf="showAdd" (click)="showAdd=false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Add a date</h1>
+      <p>{{ currentDateFormated }}</p>
+      <input type="text" [(ngModel)]="newDateDescription" placeholder="Description">
+      <button (click)="addDate()">save</button>
+    </div>
+  </div>
+</div>

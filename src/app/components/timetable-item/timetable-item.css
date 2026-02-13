@@ -1,0 +1,29 @@
+.layout {
+  background: #0d3d3f;
+  display: grid;
+  grid-template-columns: 20% 20% 60%;
+  width: 95%;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+
+.timeGrid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 90%;
+}
+
+.timeText {
+  text-align: left;
+  color: white;
+}
+
+.subjectText{
+  text-align: left;
+  color: #22e55c;
+  font-weight: bold;
+}

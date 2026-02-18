@@ -12,7 +12,11 @@
             <button class="addButton" (click)="type = 'exam'; showAdd = true">+</button>
           </div>
           <div *ngFor="let grade of exam">
-            <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
+            <app-grade-component
+              [name]="grade.name"
+              [grade]="grade.grade"
+              (click)="currentname= grade.name; deleteGrade()">
+            </app-grade-component>
           </div>
           <p class="errorText" *ngIf="exam.length <= 0">no grades</p>
 
@@ -24,7 +28,12 @@
             <button class="addButton" (click)="type = 'oral'; showAdd = true">+</button>
           </div>
           <div *ngFor="let grade of oral">
-            <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
+            <app-grade-component
+              [name]="grade.name"
+              [grade]="grade.grade"
+              appLongPress
+              (longPress)="currentname = grade.name; deleteGrade()">
+            </app-grade-component>
           </div>
           <p class="errorText" *ngIf="oral.length <= 0">no grades</p>
 
@@ -36,7 +45,12 @@
             <button class="addButton" (click)="type = 'other'; showAdd = true">+</button>
           </div>
           <div *ngFor="let grade of other">
-            <app-grade-component [name]="grade.name" [grade]="grade.grade"/>
+            <app-grade-component
+              [name]="grade.name"
+              [grade]="grade.grade"
+              appLongPress
+              (longPress)="currentname = grade.name; deleteGrade()">
+            </app-grade-component>
           </div>
           <p class="errorText" *ngIf="other.length <= 0">no grades</p>
 
@@ -63,8 +77,7 @@
       <button
         type="button"
         class="button"
-        (click)="addGrade(); $event.stopPropagation()"
-      >
+        (click)="addGrade(); $event.stopPropagation()">
         add
       </button>
     </div>

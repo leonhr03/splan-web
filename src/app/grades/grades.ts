@@ -4,15 +4,18 @@ import { GradeComponent } from '../components/grade-component/grade-component';
 import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatIcon} from '@angular/material/icon';
+import {LongPressDirective} from '../shared/directives/long-press.directive';
 
 @Component({
   selector: 'app-grades',
+  standalone: true,
   imports: [
     GradeComponent,
     NgForOf,
     FormsModule,
     NgIf,
-    MatIcon
+    MatIcon,
+    LongPressDirective
   ],
   templateUrl: './grades.html',
   styleUrl: './grades.css',
@@ -22,6 +25,7 @@ export class Grades implements OnInit {
   student = '';
   className = '';
   subject = '';
+  currentname = ""
   grades: any[] = [];
   exam: any[] = [];
   oral: any[] = [];
@@ -64,29 +68,26 @@ export class Grades implements OnInit {
 
   loadGrades() {
     const stored = localStorage.getItem(this.storageKey);
-    this.grades = stored ? JSON.parse(stored) : [];
+
+    try {
+      const parsed = stored ? JSON.parse(stored) : [];
+      this.grades = Array.isArray(parsed) ? parsed : [];
+    } catch {
+      this.grades = [];
+    }
 
     this.exam = this.grades.filter(g => g.type === 'exam');
     this.oral = this.grades.filter(g => g.type === 'oral');
     this.other = this.grades.filter(g => g.type === 'other');
-
-    const storedWeights = localStorage.getItem(
-      `${this.student}/${this.subject}/${this.className}/weight`
-    );
-
-    if (storedWeights) {
-      const parsedWeight = JSON.parse(storedWeights);
-      this.weightExam = parsedWeight.exam ?? '50';
-      this.weightOral = parsedWeight.oral ?? '30';
-      this.weightOther = parsedWeight.other ?? '20';
-    } else {
-      this.weightExam = '50';
-      this.weightOral = '30';
-      this.weightOther = '20';
-    }
   }
 
+
   addGrade() {
+
+    if (!Array.isArray(this.grades)) {
+      this.grades = [];
+    }
+
     if (!this.newName || !this.newGrade || !this.type) return;
 
     const newItem = {
@@ -95,17 +96,13 @@ export class Grades implements OnInit {
       type: this.type,
     };
 
-    this.grades = [newItem, ...this.grades];
+    this.grades.unshift(newItem);
 
-    localStorage.setItem(
-      this.storageKey,
-      JSON.stringify(this.grades)
-    );
+    localStorage.setItem(this.storageKey, JSON.stringify(this.grades));
 
     this.loadGrades();
     this.handleAvr();
 
-    // Reset Form
     this.newName = '';
     this.newGrade = '';
     this.type = '';
@@ -194,5 +191,17 @@ export class Grades implements OnInit {
       other: this.weightOther
     }))
     this.handleAvr()
+  }
+
+  deleteGrade() {
+    this.grades = this.grades.filter(i => i.name !== this.currentname);
+
+    localStorage.setItem(
+      this.storageKey,
+      JSON.stringify(this.grades) // ✅ ARRAY speichern!
+    );
+
+    this.loadGrades();
+    this.handleAvr();
   }
 }

@@ -62,8 +62,8 @@
     </div>
   </div>
 
-  <div class="alertOverlay" *ngIf="showAddAlert">
-    <div class="alertContainer">
+  <div class="alertOverlay" *ngIf="showAddAlert" (click)="showAddAlert = false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
       <h1>Add a Lesson</h1>
       <div class="inputRow">
         <div class="inputProvider">

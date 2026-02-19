@@ -4,7 +4,6 @@ import { GradeComponent } from '../components/grade-component/grade-component';
 import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatIcon} from '@angular/material/icon';
-import {LongPressDirective} from '../shared/directives/long-press.directive';
 
 @Component({
   selector: 'app-grades',
@@ -15,7 +14,6 @@ import {LongPressDirective} from '../shared/directives/long-press.directive';
     FormsModule,
     NgIf,
     MatIcon,
-    LongPressDirective
   ],
   templateUrl: './grades.html',
   styleUrl: './grades.css',

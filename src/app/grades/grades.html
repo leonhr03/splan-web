@@ -15,7 +15,7 @@
             <app-grade-component
               [name]="grade.name"
               [grade]="grade.grade"
-              (click)="currentname= grade.name; deleteGrade()">
+              (delete)="currentname = grade.name; deleteGrade()">
             </app-grade-component>
           </div>
           <p class="errorText" *ngIf="exam.length <= 0">no grades</p>
@@ -31,8 +31,7 @@
             <app-grade-component
               [name]="grade.name"
               [grade]="grade.grade"
-              appLongPress
-              (longPress)="currentname = grade.name; deleteGrade()">
+              (delete)="currentname = grade.name; deleteGrade()">
             </app-grade-component>
           </div>
           <p class="errorText" *ngIf="oral.length <= 0">no grades</p>
@@ -48,8 +47,7 @@
             <app-grade-component
               [name]="grade.name"
               [grade]="grade.grade"
-              appLongPress
-              (longPress)="currentname = grade.name; deleteGrade()">
+              (delete)="currentname = grade.name; deleteGrade()">
             </app-grade-component>
           </div>
           <p class="errorText" *ngIf="other.length <= 0">no grades</p>

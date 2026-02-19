@@ -15,7 +15,7 @@
             <app-grade-component
               [name]="grade.name"
               [grade]="grade.grade"
-              (delete)="currentname = grade.name; deleteGrade()">
+              (delete)="currentname = grade.name; showDelete = true">
             </app-grade-component>
           </div>
           <p class="errorText" *ngIf="exam.length <= 0">no grades</p>
@@ -31,7 +31,7 @@
             <app-grade-component
               [name]="grade.name"
               [grade]="grade.grade"
-              (delete)="currentname = grade.name; deleteGrade()">
+              (delete)="currentname = grade.name; showDelete = true">
             </app-grade-component>
           </div>
           <p class="errorText" *ngIf="oral.length <= 0">no grades</p>
@@ -47,7 +47,7 @@
             <app-grade-component
               [name]="grade.name"
               [grade]="grade.grade"
-              (delete)="currentname = grade.name; deleteGrade()">
+              (delete)="currentname = grade.name; showDelete = true">
             </app-grade-component>
           </div>
           <p class="errorText" *ngIf="other.length <= 0">no grades</p>
@@ -106,6 +106,18 @@
 
       <button class="saveButton" (click)="finishEdit()">Finish</button>
 
+    </div>
+  </div>
+
+
+  <div class="alertOverlay" *ngIf="showDelete">
+    <div class="alertContainer">
+      <h1>Are you sure?</h1>
+      <p>{{currentname}}</p>
+      <div class="btnRow">
+        <button class="gohstButton" (click)="showDelete = false">back</button>
+        <button class="deleteButton" (click)="deleteGrade()">delete</button>
+      </div>
     </div>
   </div>
 </div>

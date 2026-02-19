@@ -29,6 +29,7 @@ export class Grades implements OnInit {
   oral: any[] = [];
   other: any[] = [];
   showAdd = false;
+  showDelete = false;
   newName = '';
   newGrade = '';
   type = '';

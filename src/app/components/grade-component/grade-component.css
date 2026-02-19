@@ -1,7 +1,7 @@
 .itemContainer {
   display: grid;
   flex-direction: row;
-  grid-template-columns: 80% 10% 10%;
+  grid-template-columns: 75% 10% 15%;
   width: 100%;
   gap: 10px;
   align-items: center;
@@ -45,7 +45,11 @@ h1 {
   background: none;
   border: none;
   color: #990000;
-  display: flex;
-  align-self: center;
 }
 
+.deleteContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

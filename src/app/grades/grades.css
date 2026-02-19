@@ -143,6 +143,30 @@ p {
   color: #fff;
 }
 
+.deleteButton {
+  background: #990000;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.gohstButton {
+  background: #777;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  color: #fff;
+}
+
 button:hover {
   scale: 1.02;
 }

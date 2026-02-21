@@ -5,7 +5,7 @@
   height: 100%;
   width: 100%;
   padding: 16px;
-  overflow: hidden;
+  overflow: hidden; /* ✅ kein Scroll */
 }
 
 .heading {
@@ -13,9 +13,9 @@
   align-self: center;
 }
 
-.layout {
+.grid_three {
   display: grid;
-  grid-template-columns: 3fr 6fr;
+  grid-template-columns: 1fr 1fr 1fr;
   flex: 1;
   min-height: 0;
   gap: 20px;
@@ -35,91 +35,14 @@
   scrollbar-width: none;
 }
 
-.cardHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  flex-direction: row;
-}
-
-.addButton {
-  background: none;
-  border: none;
-  color: #22e55c;
-  cursor: pointer;
-  font-size: 20px;
-  padding: 6px 10px;
-}
-
-
-.cardHeader h2 {
-  margin: 0;
-  color: #22e55c;
-  font-size: 20px;
+.hGrid_two{
+  display: grid;
+  grid-template-rows: 65% 25%;
+  gap: 10px;
+  width: 100%;
 }
 
 .errorText {
   color: #777;
   text-align: center;
 }
-
-.alertOverlay {
-  position: fixed;
-  inset: 0;
-  backdrop-filter: blur(4px);
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.alertContainer{
-  display: flex;
-  background: #0d1d1f;
-  border: 1px solid #0d2d2f;
-  border-radius: 15px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 30vw;
-  padding: 16px;
-  gap: 10px;
-}
-
-.alertContainer h1{
-  margin: 0;
-  color: #22e55c;
-  font-size: 25px;
-}
-
-.input {
-  background: #0d2d2f;
-  width: 80%;
-  padding: 16px;
-  border: 1px solid #0d3d3f;
-  border-radius: 15px;
-  color: #fff;
-}
-.button {
-  background: #22e55c;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  border: none;
-  border-radius: 15px;
-  font-size: 20px;
-  color: #fff;
-}
-
-.button:hover {
-  scale: 1.02;
-}
-
-.button:active {
-  scale: 0.98;
-}
-
-

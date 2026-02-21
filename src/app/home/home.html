@@ -1,88 +1,17 @@
 <div class="container">
-  <h1 class="heading">Splan for Web</h1>
-  <div class="layout">
+  <h1 class="heading">Dashboard</h1>
+  <div class="grid_three">
     <div class="card">
-      <div class="cardHeader">
-        <h2>Classes</h2>
-        <button class="addButton" (click)="showAddClass = true">+</button>
+      <h1 class="heading">Timetable</h1>
+      <div *ngFor="let s of timetable">
+        <app-timetable-item [subject]="s.subject" [start]="s.start" [end]="s.end" [className]="s.class"/>
       </div>
-      <div *ngFor="let c of classes">
-        <app-class-item [className]="c.class" (submit)="showAddSubject = true; currentClass = c.class" (subject)="loadStudents($event ,c.class)" (click)="currentClass = c.class"></app-class-item>
-      </div>
-      <p class="errorText" *ngIf="classes.length === 0">no classes</p>
+      <p *ngIf="timetable.length <= 0" class="errorText">no lessons</p>
     </div>
-
-    <div class="card">
-      <div class="cardHeader">
-        <h2>Students {{currentClass}} - {{currentSubject}}</h2>
-        <button class="addButton" (click)="showAddStudent = true">+</button>
-      </div>
-      <p class="errorText" *ngIf="students.length === 0">no subject selected</p>
-      <div *ngIf="students.length !== 0">
-        <div *ngFor="let s of students">
-          <app-student [student]="s.student" [class]="currentClass" [subject]="currentSubject" (click)="goToGrades(s.student)"/>
-        </div>
-      </div>
+    <div class="card"></div>
+    <div class="hGrid_two">
+      <div class="card"></div>
+      <div class="card"></div>
     </div>
   </div>
-
-  <div class="alertOverlay" *ngIf="showAddClass" (click)="showAddClass = false">
-    <div class="alertContainer" (click)="$event.stopPropagation()">
-      <h1>Add a class</h1>
-
-      <input
-        class="input"
-        placeholder="class"
-        [(ngModel)]="newClass"
-      />
-
-      <button
-        type="button"
-        class="button"
-        (click)="addClass(); $event.stopPropagation()"
-      >
-        add
-      </button>
-    </div>
-  </div> <!-- add class-->
-
-  <div class="alertOverlay" *ngIf="showAddSubject" (click)="showAddSubject = false">
-    <div class="alertContainer" (click)="$event.stopPropagation()">
-      <h1>Add a subject</h1>
-
-      <input
-        class="input"
-        placeholder="subject"
-        [(ngModel)]="newSubject"
-      />
-
-      <button
-        type="button"
-        class="button"
-        (click)="addSubject(); $event.stopPropagation()"
-      >
-        add
-      </button>
-    </div>
-  </div> <!-- subject class-->
-
-  <div class="alertOverlay" *ngIf="showAddStudent" (click)="showAddStudent = false">
-    <div class="alertContainer" (click)="$event.stopPropagation()">
-      <h1>Add a Student</h1>
-
-      <input
-        class="input"
-        placeholder="subject"
-        [(ngModel)]="newStudent"
-      />
-
-      <button
-        type="button"
-        class="button"
-        (click)="addStudent(); $event.stopPropagation()"
-      >
-        add
-      </button>
-    </div>
-  </div> <!-- student class-->
 </div>

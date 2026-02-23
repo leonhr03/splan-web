@@ -3,7 +3,7 @@ import {ClassItem} from '../components/class-item/class-item';
 import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Student} from '../components/student/student';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-class',
@@ -20,7 +20,7 @@ import {Router} from '@angular/router';
 })
 
 export class Class implements OnInit {
-  constructor(private route: Router) { }
+  constructor(private route: Router, private activatedRoute: ActivatedRoute) { }
   showAddClass = false
   newClass: string = ""
   newSubject: string = ""
@@ -37,6 +37,11 @@ export class Class implements OnInit {
     const stored = localStorage.getItem('class');
     const parsed = stored ? JSON.parse(stored) : [];
     this.classes = parsed;
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.currentClass = params['class'];
+      this.loadStudents(params['subject'], params['class']);
+    })
   }
 
   async addClass() {

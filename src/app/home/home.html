@@ -2,16 +2,28 @@
   <h1 class="heading">Dashboard</h1>
   <div class="grid_three">
     <div class="card">
-      <h1 class="heading">Timetable</h1>
+      <h1 class="heading">
+        {{ today.charAt(0).toUpperCase() + today.slice(1) }}
+      </h1>
       <div *ngFor="let s of timetable">
         <app-timetable-item [subject]="s.subject" [start]="s.start" [end]="s.end" [className]="s.class"/>
       </div>
       <p *ngIf="timetable.length <= 0" class="errorText">no lessons</p>
     </div>
-    <div class="card"></div>
+    <div class="card">
+      <h1 class="heading">Classes</h1>
+      <div *ngFor="let c of classes">
+        <app-class-item [className]="c" (subject)="goToClass($event ,c)"></app-class-item>
+      </div>
+      <p *ngIf="timetable.length <= 0" class="errorText">no classes</p>
+    </div>
     <div class="hGrid_two">
-      <div class="card"></div>
-      <div class="card"></div>
+      <div class="card">
+        <h1 class="heading">Dates</h1>
+        <div *ngFor="let d of dates">
+          <app-date-item [title]="d.title"></app-date-item>
+        </div>
+      </div>
     </div>
   </div>
 </div>

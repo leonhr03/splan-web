@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="heading">Notes - {{student}}</h1>
+  <div class="layout">
+    <div class="card">
+      <div class="cardHeader">
+        <h2>Notes</h2>
+        <button class="addButton" (click)="showEditScreen = true">+</button>
+      </div>
+
+      <app-note-item *ngFor="let n of notes" [heading]="n.heading" (click)="loadDetails(n.heading)"></app-note-item>
+
+    </div>
+    <div class="card">
+      <input class="input" placeholder="Heading" [(ngModel)]="newHeading" *ngIf="showEditScreen">
+      <textarea class="contentInput" placeholder="Note" [(ngModel)]="newContent" *ngIf="showEditScreen"></textarea>
+      <div class="buttonGrid" *ngIf="showEditScreen">
+        <button class="button" (click)="addNote()">save</button>
+        <button class="button ghost" (click)="showEditScreen = false; newHeading = ''; newContent=''">cancel</button>
+      </div>
+
+      <p class="errorText" *ngIf="!showEditScreen">no note selected</p>
+    </div>
+  </div>
+</div>

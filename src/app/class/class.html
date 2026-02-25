@@ -20,7 +20,7 @@
       <p class="errorText" *ngIf="students.length === 0">no subject selected</p>
       <div *ngIf="students.length !== 0">
         <div *ngFor="let s of students">
-          <app-student [student]="s.student" [class]="currentClass" [subject]="currentSubject" (click)="goToGrades(s.student)"/>
+          <app-student [student]="s.student" [class]="currentClass" [subject]="currentSubject" (click)="showChooseAction = true; currentStudent = s.student"/>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
         add
       </button>
     </div>
-  </div> <!-- add class-->
+  </div>
 
   <div class="alertOverlay" *ngIf="showAddSubject" (click)="showAddSubject = false">
     <div class="alertContainer" (click)="$event.stopPropagation()">
@@ -64,7 +64,7 @@
         add
       </button>
     </div>
-  </div> <!-- subject class-->
+  </div>
 
   <div class="alertOverlay" *ngIf="showAddStudent" (click)="showAddStudent = false">
     <div class="alertContainer" (click)="$event.stopPropagation()">
@@ -84,5 +84,13 @@
         add
       </button>
     </div>
-  </div> <!-- student class-->
+  </div>
+
+  <div class="alertOverlay" *ngIf="showChooseAction" (click)="showChooseAction = false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Choose an action</h1>
+      <button class="button" (click)="goToGrades()">Manage Grades</button>
+      <button class="button" (click)="goToNotes()">Take Notes</button>
+    </div>
+  </div>
 </div>

@@ -44,7 +44,7 @@ export class Home implements OnInit {
     ]
 
     const date = new Date()
-    const today = days[4]
+    const today = days[date.getDay()]
 
     this.today = today
 

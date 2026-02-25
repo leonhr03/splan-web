@@ -29,8 +29,10 @@ export class Class implements OnInit {
   currentClass: string = ""
   students: any = []
   currentSubject: string = ""
+  currentStudent: string = ""
   newStudent: string = ""
   showAddStudent = false
+  showChooseAction = false
 
 
   ngOnInit() {
@@ -84,9 +86,15 @@ export class Class implements OnInit {
     this.showAddStudent = false;
   }
 
-  goToGrades(student: string) {
+  goToGrades() {
     this.route.navigate(['/grades'], {
-      queryParams: {student: student, class: this.currentClass, subject: this.currentSubject}
+      queryParams: {student: this.currentStudent, class: this.currentClass, subject: this.currentSubject}
+    });
+  }
+
+  goToNotes() {
+    this.route.navigate(['/notes'], {
+      queryParams: {student: this.currentStudent, class: this.currentClass, subject: this.currentSubject}
     });
   }
 }

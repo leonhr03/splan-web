@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: #0d1d1f;
+  height: 100%;
+  width: 100%;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.heading {
+  color: #22e55c;
+  align-self: center;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 6fr;
+  flex: 1;
+  min-height: 0;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.card {
+  background: #0d2d2f;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  border-radius: 15px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-direction: row;
+}
+
+.cardHeader h2 {
+  margin: 0;
+  color: #22e55c;
+  font-size: 20px;
+}
+
+.addButton {
+  background: none;
+  border: none;
+  color: #22e55c;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 6px 10px;
+}
+
+.input{
+  background: #0d2d2f;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #0d3d3f;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.contentInput{
+  background: #0d2d2f;
+  width: 100%;
+  height: 80%;
+  padding: 16px;
+  border: 1px solid #0d3d3f;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.buttonGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.button {
+  background: #22e55c;
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.ghost {
+  background: #777;
+}
+
+
+.errorText {
+  color: #777;
+  text-align: center;
+}

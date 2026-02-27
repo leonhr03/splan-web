@@ -22,6 +22,7 @@ export class Notes implements OnInit{
   className: string = ""
   notes: any[] = []
   showEditScreen = false
+  showDeleteAlert = false
 
   newHeading: string = ""
   newContent: string = ""
@@ -72,5 +73,10 @@ export class Notes implements OnInit{
     this.newHeading = currentNote[0].heading
     this.newContent = currentNote[0].content
     this.showEditScreen = true
+  }
+
+  onRightClick(event: MouseEvent, item: string){
+    event.preventDefault();
+    this.showDeleteAlert = true
   }
 }

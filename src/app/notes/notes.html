@@ -7,7 +7,7 @@
         <button class="addButton" (click)="showEditScreen = true">+</button>
       </div>
 
-      <app-note-item *ngFor="let n of notes" [heading]="n.heading" (click)="loadDetails(n.heading)"></app-note-item>
+      <app-note-item *ngFor="let n of notes" [heading]="n.heading" (click)="loadDetails(n.heading)" (contextmenu)="onRightClick($event, n.heading)"></app-note-item>
 
     </div>
     <div class="card">
@@ -21,4 +21,5 @@
       <p class="errorText" *ngIf="!showEditScreen">no note selected</p>
     </div>
   </div>
+
 </div>

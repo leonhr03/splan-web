@@ -99,18 +99,6 @@
   cursor: pointer;
 }
 
-.deleteButton {
-  background: #990000;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
-  width: 95%;
-  border: none;
-  border-radius: 15px;
-  font-size: 20px;
-  color: #fff;
-}
-
 .ghost {
   background: #777;
 }
@@ -119,4 +107,21 @@
 .errorText {
   color: #777;
   text-align: center;
+}
+
+.context-menu {
+  position: fixed;
+  background: #0d4d4f;
+  border: none;
+  padding: 10px;
+  z-index: 1000;
+  border-radius: 15px;
+}
+
+.context-menu button {
+  background: none;
+  color: #ff0000;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
 }

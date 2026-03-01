@@ -22,4 +22,13 @@
     </div>
   </div>
 
+  <div
+    *ngIf="showContextMenu"
+    class="context-menu"
+    [style.left.px]="contextMenuPosition.x + 10"
+    [style.top.px]="contextMenuPosition.y + 10"
+  >
+    <button (click)="deleteNote()">Delete</button>
+  </div>
+
 </div>

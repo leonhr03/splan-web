@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -22,10 +22,21 @@ export class Notes implements OnInit{
   className: string = ""
   notes: any[] = []
   showEditScreen = false
-  showDeleteAlert = false
+  contextMenuPosition = {
+    x: 0,
+    y: 0
+  };
+
+  showContextMenu = false;
+  currentHeading: string = ""
 
   newHeading: string = ""
   newContent: string = ""
+
+  @HostListener('document:click')
+  closeMenu() {
+    this.showContextMenu = false;
+  }
 
 
   ngOnInit() {
@@ -75,8 +86,23 @@ export class Notes implements OnInit{
     this.showEditScreen = true
   }
 
-  onRightClick(event: MouseEvent, item: string){
-    event.preventDefault();
-    this.showDeleteAlert = true
+  onRightClick(event: MouseEvent, heading: string) {
+    event.preventDefault(); // wichtig!
+
+    this.currentHeading = heading;
+    this.showContextMenu = true;
+
+    this.contextMenuPosition = {
+      x: event.clientX,
+      y: event.clientY
+    };
+  }
+
+  deleteNote(){
+    this.notes = this.notes.filter(n => n.heading !== this.currentHeading)
+    localStorage.setItem(
+      `${this.className}/${this.subject}/${this.student}/notes`,
+      JSON.stringify(this.notes)
+    );
   }
 }

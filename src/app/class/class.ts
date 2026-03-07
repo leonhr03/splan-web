@@ -4,6 +4,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Student} from '../components/student/student';
 import {ActivatedRoute, Router} from '@angular/router';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-class',
@@ -12,7 +13,8 @@ import {ActivatedRoute, Router} from '@angular/router';
     NgIf,
     FormsModule,
     NgForOf,
-    Student
+    Student,
+    MatIcon
   ],
   standalone: true,
   templateUrl: './class.html',
@@ -20,7 +22,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 
 export class Class implements OnInit {
-  constructor(private route: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private route: Router, private activatedRoute: ActivatedRoute, private cdr: ChangeDetectorRef) { }
   showAddClass = false
   newClass: string = ""
   newSubject: string = ""
@@ -30,9 +32,11 @@ export class Class implements OnInit {
   students: any = []
   currentSubject: string = ""
   currentStudent: string = ""
-  newStudent: string = ""
   showAddStudent = false
   showChooseAction = false
+  searchStudent: string = ""
+  storedStudents: any = []
+  filteredStudents: any[] = []
 
 
   ngOnInit() {
@@ -40,10 +44,24 @@ export class Class implements OnInit {
     const parsed = stored ? JSON.parse(stored) : [];
     this.classes = parsed;
 
+    this.loadStoredStudents()
+
     this.activatedRoute.queryParams.subscribe(params => {
       this.currentClass = params['class'];
       this.loadStudents(params['subject'], params['class']);
     })
+  }
+
+  loadStoredStudents(){
+    const stored = localStorage.getItem('students');
+    this.storedStudents = stored ? JSON.parse(stored) : [];
+  }
+
+  filterStudents(){
+    this.filteredStudents = this.storedStudents.filter((s: any) =>
+      s.name.toLowerCase().includes(this.searchStudent.toLowerCase())
+    )
+    this.cdr.detectChanges();
   }
 
   async addClass() {
@@ -76,13 +94,19 @@ export class Class implements OnInit {
     console.log(this.students)
   }
 
-  addStudent(){
-    const stored = localStorage.getItem(`${this.currentClass}/${this.currentSubject}/students`);
-    const parsed = stored ? JSON.parse(stored) : [];
-    const newList = [{student: this.newStudent}, ...parsed]
-    localStorage.setItem(`${this.currentClass}/${this.currentSubject}/students`, JSON.stringify(newList));
-    this.students = newList;
-    this.newStudent = "";
+  addStudent(id: string) {
+    const newStudent = this.storedStudents.find((s: any) => s.id === id);
+    const students = localStorage.getItem(`${this.currentClass}/${this.currentSubject}/students`);
+    let parsed = students ? JSON.parse(students) : [];
+    if (!Array.isArray(parsed)) {
+      parsed = [];
+    }
+    const newList = [...parsed, newStudent];
+    localStorage.setItem(
+      `${this.currentClass}/${this.currentSubject}/students`,
+      JSON.stringify(newList)
+    );
+    this.loadStudents(this.currentSubject, this.currentClass);
     this.showAddStudent = false;
   }
 

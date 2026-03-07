@@ -42,7 +42,7 @@ export class Calendar implements OnInit, AfterViewInit {
     initialView: 'dayGridMonth',
     eventDisplay: 'block',
     dayMaxEventRows: false,
-    eventTextColor: '#000',
+    eventTextColor: '#fff',
     dateClick: (info: any) => {
       console.log('Date clicked:', info.dateStr);
       this.showAdd = true;

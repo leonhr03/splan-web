@@ -20,7 +20,7 @@
       <p class="errorText" *ngIf="students.length === 0">no subject selected</p>
       <div *ngIf="students.length !== 0">
         <div *ngFor="let s of students">
-          <app-student [student]="s.student" [class]="currentClass" [subject]="currentSubject" (click)="showChooseAction = true; currentStudent = s.student"/>
+          <app-student [student]="s.name" [class]="s.class" [subject]="currentSubject" (click)="showChooseAction = true; currentStudent = s.name"/>
         </div>
       </div>
     </div>
@@ -70,19 +70,22 @@
     <div class="alertContainer" (click)="$event.stopPropagation()">
       <h1>Add a Student</h1>
 
-      <input
-        class="input"
-        placeholder="subject"
-        [(ngModel)]="newStudent"
-      />
+      <div class="searchLayout">
+        <input
+          class="searchInput"
+          placeholder="search for student..."
+          [(ngModel)]="searchStudent"
+        />
+        <button class="searchButton" (click)="filterStudents()"><mat-icon>search</mat-icon></button>
+      </div>
 
-      <button
-        type="button"
-        class="button"
-        (click)="addStudent(); $event.stopPropagation()"
-      >
-        add
-      </button>
+      <p class="errorText" *ngIf="filteredStudents.length > 0"></p>
+      <div *ngFor="let s of filteredStudents" class="addStudentItem" (click)="addStudent(s.id)">
+        <h1>{{s.name}} {{s.class}}</h1>
+      </div>
+
+
+
     </div>
   </div>
 

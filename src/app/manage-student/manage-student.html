@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="header">
+    <h1 class="heading">Students</h1>
+    <button class="addButton" (click)="showAddAlert = true">+</button>
+  </div>
+
+  <div class="list" >
+    <app-student-detail  *ngFor="let s of students" [student]="s.name" [className]="s.class" [birthday]="s.birthday" (click)="loadGradeOverwatch(s.name, s.class)"/>
+  </div>
+
+  <div class="alertOverlay" *ngIf="showAddAlert" (click)="showAddAlert = false">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Add a student</h1>
+      <input placeholder="name" class="input" [(ngModel)]="newName">
+      <div class="inputRow">
+        <input placeholder="class" class="input" [(ngModel)]="newClass">
+        <input placeholder="Birthday" class="input" [(ngModel)]="newBirthDay">
+      </div>
+      <button class="button" (click)="addStudent()">add</button>
+    </div>
+  </div>
+</div>

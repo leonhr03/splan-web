@@ -48,7 +48,7 @@
   border-radius: 15px;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch; /* wichtig */
   width: 30vw;
   padding: 16px;
   gap: 10px;
@@ -58,6 +58,7 @@
   margin: 0;
   color: #22e55c;
   font-size: 25px;
+  text-align: center;
 }
 
 .input {
@@ -90,4 +91,46 @@
   gap: 10px;
   align-items: center;
 
+}
+
+.pdfButton {
+  background: #22e55c;
+  width: 90%;
+  padding: 16px;
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  font-weight: bold;
+  align-self: center;
+}
+
+.pdf{
+  display: flex;
+  flex-direction: column;
+  width: 794px;
+  align-items: center;
+  padding: 16px;
+}
+
+.pdf h1 {
+  text-align: center;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.pdfGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 16px;
+}
+
+.gridHeading{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.pdfGrid p {
+  text-align: center;
+  color: #000;
 }

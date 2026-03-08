@@ -1,0 +1,41 @@
+.item{
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: 75% 25%;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #0d4d4f;
+  margin-top: 10px;
+}
+
+.item h1{
+  text-align: left;
+  color: #22e55c;
+}
+
+.gradeContainer {
+  border: none;
+  background-color: #0d2d2f;
+  border-radius: 50vh;
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+}
+
+.gradeContainer.onetotwo {
+  background-color: rgba(0,255,0,0.1);
+}
+
+
+.gradeContainer.twotofour {
+  background-color: rgba(255,180,0,0.2);
+}
+
+.gradeContainer.fourtosix {
+  background-color: rgba(255,0,0,0.1);
+}

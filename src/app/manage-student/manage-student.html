@@ -19,4 +19,33 @@
       <button class="button" (click)="addStudent()">add</button>
     </div>
   </div>
+
+  <div class="alertOverlay" *ngIf="overwatch" (click)="overwatch = false; grades = []">
+    <div class="alertContainer" (click)="$event.stopPropagation()">
+      <h1>Overwatch</h1>
+      <div *ngFor="let g of grades">
+        <app-grade-overview [subject]="g.subject" [grade]="g.grade"/>
+      </div>
+      <button (click)="generatePdf()" class="pdfButton">generate pdf</button>
+    </div>
+  </div>
+
+
+
+    <div id="pdfContent" class="pdf" style="position:absolute; left:-9999px;">
+
+    <h1>{{currentClass}} {{currentStudent}}</h1>
+
+      <div class="pdfGrid">
+        <p class="gridHeading">Subject</p>
+        <p class="gridHeading">Grade</p>
+      </div>
+
+      <div class="pdfGrid"*ngFor="let g of grades">
+        <p>{{g.subject}}</p>
+        <p>{{g.grade}}</p>
+      </div>
+
+
+  </div>
 </div>

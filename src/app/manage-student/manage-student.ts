@@ -1,8 +1,11 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {StudentDetail} from '../components/student-detail/student-detail';
 import {FormBuilder, FormsModule} from '@angular/forms';
 import {skipUntil} from 'rxjs';
+import {GradeOverview} from '../components/grade-overview/grade-overview';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-manage-student',
@@ -11,19 +14,24 @@ import {skipUntil} from 'rxjs';
     NgIf,
     StudentDetail,
     NgForOf,
-    FormsModule
+    FormsModule,
+    GradeOverview,
   ],
   templateUrl: './manage-student.html',
   styleUrl: './manage-student.css',
 })
 class ManageStudent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) { }
+
   showAddAlert: boolean = false
   newName: string = ''
   newClass: string = ''
   newBirthDay: string = ''
   students: any[] = [{name: "Max Mustermann", class: "10a", birthday: "10.2.12"}]
   grades: any[] = []
+  overwatch: boolean = false
+  currentClass: string = ''
+  currentStudent: string = ""
 
   ngOnInit() {
     this.loadStudents()
@@ -56,16 +64,41 @@ class ManageStudent implements OnInit {
 
 
   loadGradeOverwatch(name: string, className: string) {
+    this.currentStudent = name;
+    this.currentClass = className;
     const storedSubjects = localStorage.getItem(`${className}/subjects`);
     const subjects = storedSubjects ? JSON.parse(storedSubjects) : [];
 
     subjects.forEach((subject: any) => {
-      const grade = localStorage.getItem(`${className}/${subject}/${name}/avrGes`)
-      this.grades.push({subject: subject, grade: grade})
+      const grade = localStorage.getItem(`${className}/${subject.subject}/${name}/avrGes`)
+      const newGrades = [...this.grades, {subject: subject.subject, grade: grade}];
+      this.grades = newGrades;
     })
 
     console.log(this.grades)
+    this.overwatch = true
     this.cdr.detectChanges()
+  }
+
+  generatePdf() {
+
+    const element = document.getElementById('pdfContent');
+
+    html2canvas(element!).then(canvas => {
+
+      const imgData = canvas.toDataURL('image/png');
+
+      const pdf = new jsPDF('p', 'mm', 'a4');
+
+      const width = 210;
+      const height = canvas.height * width / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+
+      pdf.save('grades.pdf');
+
+    });
+
   }
 }
 

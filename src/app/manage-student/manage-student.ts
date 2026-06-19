@@ -32,6 +32,7 @@ class ManageStudent implements OnInit {
   overwatch: boolean = false
   currentClass: string = ''
   currentStudent: string = ""
+  currentDate: string = ""
 
   ngOnInit() {
     this.loadStudents()
@@ -66,6 +67,7 @@ class ManageStudent implements OnInit {
   loadGradeOverwatch(name: string, className: string) {
     this.currentStudent = name;
     this.currentClass = className;
+    this.currentDate = new Date().toLocaleDateString('de-DE');
     const storedSubjects = localStorage.getItem(`${className}/subjects`);
     const subjects = storedSubjects ? JSON.parse(storedSubjects) : [];
 

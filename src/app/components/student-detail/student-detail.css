@@ -1,6 +1,6 @@
 .item {
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 75% 10% 15%;
   flex-direction: row;
   align-items: center;
   width: 100%;
@@ -27,4 +27,14 @@ h1{
 
 p {
   color: #fff;
+}
+
+.showButton {
+  background: #22e55c;
+  color: #fff;
+  width: 60%;
+  border-radius: 15px;
+  margin-left: 10px;
+  border: none;
+  justify-self: flex-end;
 }

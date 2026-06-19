@@ -5,7 +5,7 @@
   </div>
 
   <div class="list" >
-    <app-student-detail  *ngFor="let s of students" [student]="s.name" [className]="s.class" [birthday]="s.birthday" (click)="loadGradeOverwatch(s.name, s.class)"/>
+    <app-student-detail  *ngFor="let s of students" [student]="s.name" [className]="s.class" [birthday]="s.birthday" (show)="loadGradeOverwatch(s.name, s.class)"/>
   </div>
 
   <div class="alertOverlay" *ngIf="showAddAlert" (click)="showAddAlert = false">
@@ -44,6 +44,11 @@
       <div class="pdfGrid"*ngFor="let g of grades">
         <p>{{g.subject}}</p>
         <p>{{g.grade}}</p>
+      </div>
+
+      <div class="pdfFooter">
+        <p class="textOverline">sign of Teacher</p>
+        <p class="pdfDate">{{currentDate}}</p>
       </div>
 
 
